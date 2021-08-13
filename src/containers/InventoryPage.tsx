@@ -3,9 +3,10 @@ import React, { ReactElement, useEffect, useState } from "react";
 import InventoryTable from "../components/InventoryTable";
 import localStorage, { ProductInventory } from "../localStorage";
 import update from "immutability-helper";
-import { Button, ButtonGroup, IconButton, List, ListItem, ListItemText, ListSubheader, Modal, Snackbar } from "@material-ui/core";
+import { Button, ButtonGroup, IconButton, List, ListItem, ListItemSecondaryAction, ListItemText, ListSubheader, Modal, Snackbar } from "@material-ui/core";
 import RotateLeftIcon from "@material-ui/icons/RotateLeft";
 import ShareIcon from "@material-ui/icons/Share";
+import AssignmentIcon from "@material-ui/icons/Assignment";
 import "./InventoryPage.scss";
 import { Paper } from "@material-ui/core";
 import copy from "copy-to-clipboard";
@@ -160,7 +161,7 @@ function CompanyClipboardList({ data, onCloseRequest }: { data: ProductInventory
             button
             disabled={company.inventories.length === 0}
             onClick={() => {
-              copyToClickBoard(company.inventories);
+              exportText(company.inventories, { clipboardCopy: true });
               onCloseRequest(true);
             }}
           >
@@ -168,6 +169,27 @@ function CompanyClipboardList({ data, onCloseRequest }: { data: ProductInventory
               primary={company.name}
               secondary={company.inventories.map((item) => `${item.product.name}(${item.requiredCount}${item.product.unit || ""})`).join(",")}
             />
+            <ListItemSecondaryAction>
+              <IconButton
+                edge="end"
+                aria-label="share"
+                onClick={() => {
+                  exportText(company.inventories, { share: true });
+                }}
+              >
+                <ShareIcon />
+              </IconButton>
+              {/* <IconButton
+                edge="end"
+                aria-label="copy"
+                onClick={() => {
+                  exportText(company.inventories, { clipboardCopy: true });
+                  onCloseRequest(true);
+                }}
+              >
+                <AssignmentIcon />
+              </IconButton> */}
+            </ListItemSecondaryAction>
           </ListItem>
         );
       })}
@@ -175,10 +197,14 @@ function CompanyClipboardList({ data, onCloseRequest }: { data: ProductInventory
   );
 }
 
-function copyToClickBoard(inventories: ProductInventory[]) {
+function exportText(inventories: ProductInventory[], { share, clipboardCopy }: { share?: boolean; clipboardCopy?: boolean }) {
   const shareText = inventories.map((item) => `${item.product.name}\t${item.requiredCount}${item.product.unit || ""}`).join("\r\n");
-  copy(shareText);
-  if (window.navigator?.share) {
-    window.navigator?.share({ text: shareText });
+  if (clipboardCopy) {
+    copy(shareText);
+  }
+  if (share) {
+    if (window.navigator?.share) {
+      window.navigator?.share({ text: shareText });
+    }
   }
 }
