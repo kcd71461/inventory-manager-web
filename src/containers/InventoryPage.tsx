@@ -176,5 +176,5 @@ function CompanyClipboardList({ data, onCloseRequest }: { data: ProductInventory
 }
 
 function copyToClickBoard(inventories: ProductInventory[]) {
-  copy(inventories.map((item) => `${item.product.name}\t${item.requiredCount}${item.product.unit || ""}`).join("\n"));
+  copy(inventories.map((item) => `${item.product.name}\t${item.requiredCount}${item.product.unit || ""}`).join("\r\n"));
 }
