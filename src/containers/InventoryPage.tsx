@@ -5,7 +5,7 @@ import localStorage, { ProductInventory } from "../localStorage";
 import update from "immutability-helper";
 import { Button, ButtonGroup, IconButton, List, ListItem, ListItemText, ListSubheader, Modal, Snackbar } from "@material-ui/core";
 import RotateLeftIcon from "@material-ui/icons/RotateLeft";
-import PlaylistAddIcon from "@material-ui/icons/PlaylistAdd";
+import ShareIcon from "@material-ui/icons/Share";
 import "./InventoryPage.scss";
 import { Paper } from "@material-ui/core";
 import copy from "copy-to-clipboard";
@@ -89,7 +89,7 @@ export default observer(function InventoryPage({ show }: Props): ReactElement | 
           초기화
         </Button>
         <Button
-          startIcon={<PlaylistAddIcon />}
+          startIcon={<ShareIcon />}
           onClick={() => {
             setClipboardModalOpen(true);
           }}
@@ -176,5 +176,9 @@ function CompanyClipboardList({ data, onCloseRequest }: { data: ProductInventory
 }
 
 function copyToClickBoard(inventories: ProductInventory[]) {
-  copy(inventories.map((item) => `${item.product.name}\t${item.requiredCount}${item.product.unit || ""}`).join("\r\n"));
+  const shareText = inventories.map((item) => `${item.product.name}\t${item.requiredCount}${item.product.unit || ""}`).join("\r\n");
+  copy(shareText);
+  if (window.navigator?.share) {
+    window.navigator?.share({ text: shareText });
+  }
 }
