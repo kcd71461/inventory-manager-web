@@ -1,0 +1,22 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .table-wrapper {
+    flex: 1;
+    overflow: auto;
+    .number-input {
+      margin: 0 0.7em;
+    }
+  }
+  .buttons {
+    margin: 0.5em;
+    border-radius: 3px;
+    overflow: hidden;
+    button {
+      flex: 1;
+      border-radius: 0;
+      padding: 1em;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+.inventory-page {
+  .table-wrapper {
+    th:nth-child(1) {
+      width: 33%;
+    }
+    th:nth-child(2),
+    th:nth-child(3) {
+      min-width: 8em;
+    }
+    td,
+    th {
+      &:nth-child(1) {
+        padding-left: 1em;
+      }
+      &:last-child {
+        padding-right: 1em;
+      }
+    }
+  }
+}
+
+#clipboard-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: calc(100% - 2em);
+  max-height: calc(100% - 2em);
+  transform: translate(-50%, -50%);
+  min-width: 300px;
+  overflow: auto;
+}
