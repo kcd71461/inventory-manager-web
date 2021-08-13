@@ -75,13 +75,15 @@ export default observer(function InventoryPage({ show }: Props): ReactElement | 
         <Button
           startIcon={<RotateLeftIcon />}
           onClick={() => {
-            const newData = data.map((item) => item);
-            for (let row of newData) {
-              row.remainCount = 0;
-              row.requiredCount = 0;
+            if (window.confirm("재고/필요 수량이 0으로 초기화됩니다.\n초기화하시겠습니까?")) {
+              const newData = data.map((item) => item);
+              for (let row of newData) {
+                row.remainCount = 0;
+                row.requiredCount = 0;
+              }
+              setData(newData);
+              localStorage.saveProductInventories(newData);
             }
-            setData(newData);
-            localStorage.saveProductInventories(newData);
           }}
         >
           초기화

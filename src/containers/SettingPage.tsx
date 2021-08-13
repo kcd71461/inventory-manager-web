@@ -38,7 +38,9 @@ export default observer(function SettingPage({ show }: Props): ReactElement | nu
         <Button
           startIcon={<RotateLeftIcon />}
           onClick={() => {
-            setData(localStorage.products.map((item) => item));
+            if (window.confirm("마지막 저장된 내용으로 초기화합니다.\n초기화 하시겠습니까?")) {
+              setData(localStorage.products.map((item) => item));
+            }
           }}
         >
           초기화
