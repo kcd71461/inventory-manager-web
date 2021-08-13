@@ -162,7 +162,10 @@ function CompanyClipboardList({ data, onCloseRequest }: { data: ProductInventory
               onCloseRequest(true);
             }}
           >
-            <ListItemText primary={company.name} secondary={company.inventories.map((item) => `${item.product.name}(${item.requiredCount})`).join(",")} />
+            <ListItemText
+              primary={company.name}
+              secondary={company.inventories.map((item) => `${item.product.name}(${item.requiredCount}${item.product.unit || ""})`).join(",")}
+            />
           </ListItem>
         );
       })}
@@ -171,5 +174,5 @@ function CompanyClipboardList({ data, onCloseRequest }: { data: ProductInventory
 }
 
 function copyToClickBoard(inventories: ProductInventory[]) {
-  copy(inventories.map((item) => `${item.product.name}\t${item.requiredCount}`).join("\n"));
+  copy(inventories.map((item) => `${item.product.name}\t${item.requiredCount}${item.product.unit || ""}`).join("\n"));
 }
