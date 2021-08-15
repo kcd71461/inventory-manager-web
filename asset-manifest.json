@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/inventory-manager-web/static/css/main.7392a7e5.chunk.css",
+    "main.js": "/inventory-manager-web/static/js/main.092aedf5.chunk.js",
+    "main.js.map": "/inventory-manager-web/static/js/main.092aedf5.chunk.js.map",
+    "runtime-main.js": "/inventory-manager-web/static/js/runtime-main.64126deb.js",
+    "runtime-main.js.map": "/inventory-manager-web/static/js/runtime-main.64126deb.js.map",
+    "static/js/2.d422844a.chunk.js": "/inventory-manager-web/static/js/2.d422844a.chunk.js",
+    "static/js/2.d422844a.chunk.js.map": "/inventory-manager-web/static/js/2.d422844a.chunk.js.map",
+    "static/js/3.0d85e26d.chunk.js": "/inventory-manager-web/static/js/3.0d85e26d.chunk.js",
+    "static/js/3.0d85e26d.chunk.js.map": "/inventory-manager-web/static/js/3.0d85e26d.chunk.js.map",
+    "index.html": "/inventory-manager-web/index.html",
+    "static/css/main.7392a7e5.chunk.css.map": "/inventory-manager-web/static/css/main.7392a7e5.chunk.css.map",
+    "static/js/2.d422844a.chunk.js.LICENSE.txt": "/inventory-manager-web/static/js/2.d422844a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.64126deb.js",
+    "static/js/2.d422844a.chunk.js",
+    "static/css/main.7392a7e5.chunk.css",
+    "static/js/main.092aedf5.chunk.js"
+  ]
+}
